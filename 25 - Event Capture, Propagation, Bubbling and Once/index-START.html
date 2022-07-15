@@ -43,6 +43,18 @@
 <button></button>
 <script>
 
+const divs = document.querySelectorAll('div');
+
+function logText(e) {
+
+  console.log(this.classList.value);
+  e.stopPropagation(); //evita que el evento se vaya hacia los elementos superiorres (bubbling up)
+}
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture: false //es el default, con true hace que comience desde el elemento mas externo
+}));
+
 </script>
 </body>
 </html>
